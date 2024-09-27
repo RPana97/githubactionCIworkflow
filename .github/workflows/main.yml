@@ -26,12 +26,11 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      # Step 4: Build the Docker image
+      # Step 4: Build the Docker image with your Docker Hub username
       - name: Build Docker image
-        run: docker build -t my-app:${{ github.sha }} .
+        run: docker build -t rpana97/my-app:${{ github.sha }} .
 
       # Step 5: Push the Docker image to Docker Hub (optional)
       - name: Push Docker image
         if: github.ref == 'refs/heads/main'
-        run: docker push my-app:${{ github.sha }}
-
+        run: docker push rpana97/my-app:${{ github.sha }}
